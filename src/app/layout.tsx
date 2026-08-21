@@ -17,11 +17,13 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
-        <nav className="bg-slate-900 text-white p-4 shadow-md flex justify-between items-center">
-          <h1 className="text-xl font-bold">Gestor de Demandas TI</h1>
-          <div className="space-x-4">
-            <a href="/" className="hover:text-slate-300">Painel (Matriz)</a>
-            <a href="/concluidos" className="hover:text-slate-300">Concluídos</a>
+        <nav className="border-b border-slate-800 bg-slate-950/50 p-4 sticky top-0 z-10 backdrop-blur-sm">
+          <div className="max-w-7xl mx-auto flex justify-between items-center">
+            <h1 className="text-xl font-bold tracking-tight">Demandas TI</h1>
+            <div className="space-x-6 text-sm font-medium">
+              <a href="/" className="text-slate-300 hover:text-white transition-colors">Matriz</a>
+              <a href="/concluidos" className="text-slate-300 hover:text-white transition-colors">Concluídos</a>
+            </div>
           </div>
         </nav>
         <main className="p-4 md:p-8 max-w-7xl mx-auto">

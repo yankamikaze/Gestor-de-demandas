@@ -30,14 +30,14 @@ export default function Concluidos() {
 
   return (
     <div>
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-2">Demandas Concluídas</h2>
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold tracking-tight mb-4">Demandas Concluídas</h2>
         <div className="relative max-w-md">
-          <Search className="absolute left-3 top-2.5 text-slate-400" size={18} />
+          <Search className="absolute left-3 top-2.5 text-slate-500" size={18} />
           <input 
             type="text" 
             placeholder="Buscar em título ou descrição..." 
-            className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-10 pr-4 py-2 bg-slate-900 border border-slate-700 rounded-lg focus:outline-none focus:border-slate-500 text-sm placeholder:text-slate-500 transition-colors"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -49,7 +49,9 @@ export default function Concluidos() {
           <TicketCard key={t.id} ticket={t} onUpdate={fetchTickets} onEdit={() => {}} />
         ))}
         {filtered.length === 0 && (
-          <p className="text-slate-500">Nenhum ticket concluído encontrado.</p>
+          <div className="col-span-full py-12 text-center border border-dashed border-slate-800 rounded-lg">
+            <p className="text-slate-500">Nenhum ticket concluído encontrado.</p>
+          </div>
         )}
       </div>
     </div>

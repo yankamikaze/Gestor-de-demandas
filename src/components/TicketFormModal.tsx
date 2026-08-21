@@ -55,22 +55,25 @@ export default function TicketFormModal({ ticket, isOpen, onClose, onSaved }: Pr
     onClose();
   };
 
+  const inputClass = "w-full bg-slate-900 border border-slate-700 rounded p-2 text-sm text-slate-200 focus:outline-none focus:border-slate-500 transition-colors";
+  const labelClass = "block text-xs font-medium text-slate-400 mb-1.5";
+
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto">
-        <h2 className="text-xl font-bold mb-4">{ticket ? 'Editar Demanda' : 'Nova Demanda'}</h2>
+    <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+      <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-2xl">
+        <h2 className="text-lg font-semibold mb-5 tracking-tight">{ticket ? 'Editar Demanda' : 'Nova Demanda'}</h2>
         
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-1">Título</label>
-            <input required type="text" className="w-full border rounded p-2"
+            <label className={labelClass}>Título</label>
+            <input required type="text" className={inputClass}
               value={formData.title} onChange={e => setFormData({...formData, title: e.target.value})} />
           </div>
           
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Tipo</label>
-              <select className="w-full border rounded p-2"
+              <label className={labelClass}>Tipo</label>
+              <select className={inputClass}
                 value={formData.type} onChange={e => setFormData({...formData, type: e.target.value})}>
                 <option>Incidente</option>
                 <option>Melhoria</option>
@@ -80,15 +83,15 @@ export default function TicketFormModal({ ticket, isOpen, onClose, onSaved }: Pr
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Área Solicitante</label>
-              <input required type="text" className="w-full border rounded p-2"
+              <label className={labelClass}>Área Solicitante</label>
+              <input required type="text" className={inputClass}
                 value={formData.area} onChange={e => setFormData({...formData, area: e.target.value})} />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">Quadrante de Eisenhower</label>
-            <select className="w-full border rounded p-2"
+            <label className={labelClass}>Quadrante de Eisenhower</label>
+            <select className={inputClass}
               value={formData.quadrant} onChange={e => setFormData({...formData, quadrant: Number(e.target.value)})}>
               <option value={1}>1. Urgente e Importante (Fazer Agora)</option>
               <option value={2}>2. Importante, Não Urgente (Planejar)</option>
@@ -98,14 +101,14 @@ export default function TicketFormModal({ ticket, isOpen, onClose, onSaved }: Pr
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">Descrição</label>
-            <textarea required rows={4} className="w-full border rounded p-2"
+            <label className={labelClass}>Descrição</label>
+            <textarea required rows={4} className={inputClass}
               value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} />
           </div>
 
-          <div className="flex justify-end gap-2 pt-4">
-            <button type="button" onClick={onClose} className="px-4 py-2 border rounded hover:bg-slate-50">Cancelar</button>
-            <button type="submit" className="px-4 py-2 bg-slate-900 text-white rounded hover:bg-slate-800">Salvar</button>
+          <div className="flex justify-end gap-3 pt-5 border-t border-slate-800/50 mt-6">
+            <button type="button" onClick={onClose} className="px-4 py-2 text-sm font-medium text-slate-400 hover:text-slate-200 transition-colors">Cancelar</button>
+            <button type="submit" className="px-5 py-2 text-sm font-medium bg-slate-100 text-slate-900 rounded hover:bg-white transition-colors">Salvar</button>
           </div>
         </form>
       </div>
