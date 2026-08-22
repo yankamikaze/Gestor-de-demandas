@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
-        <nav className="border-b border-neutral-800 bg-black/80 p-4 sticky top-0 z-10 backdrop-blur-md">
+        <nav className="border-b border-neutral-800 bg-neutral-900/80 p-4 sticky top-0 z-10 backdrop-blur-md">
           <div className="max-w-7xl mx-auto flex justify-between items-center">
             <h1 className="text-xl font-bold tracking-tight text-white">Demandas TI</h1>
             <div className="space-x-6 text-sm font-medium">

@@ -37,7 +37,7 @@ export default function Concluidos() {
           <input 
             type="text" 
             placeholder="Buscar em título ou descrição..." 
-            className="w-full pl-10 pr-4 py-2 bg-neutral-900 border border-neutral-700 rounded-lg focus:outline-none focus:border-neutral-500 text-sm placeholder:text-neutral-500 transition-colors text-neutral-200"
+            className="w-full pl-10 pr-4 py-2 bg-neutral-800 border border-neutral-700 rounded-lg focus:outline-none focus:border-neutral-500 text-sm placeholder:text-neutral-500 transition-colors text-neutral-200"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -49,7 +49,7 @@ export default function Concluidos() {
           <TicketCard key={t.id} ticket={t} onUpdate={fetchTickets} onEdit={() => {}} />
         ))}
         {filtered.length === 0 && (
-          <div className="col-span-full py-12 text-center border border-dashed border-neutral-800 rounded-lg">
+          <div className="col-span-full py-12 text-center border border-dashed border-neutral-700 rounded-lg">
             <p className="text-neutral-500">Nenhum ticket concluído encontrado.</p>
           </div>
         )}

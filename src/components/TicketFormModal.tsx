@@ -55,12 +55,12 @@ export default function TicketFormModal({ ticket, isOpen, onClose, onSaved }: Pr
     onClose();
   };
 
-  const inputClass = "w-full bg-black border border-neutral-800 rounded p-2 text-sm text-neutral-200 focus:outline-none focus:border-neutral-500 transition-colors";
+  const inputClass = "w-full bg-neutral-900 border border-neutral-700 rounded p-2 text-sm text-neutral-200 focus:outline-none focus:border-neutral-500 transition-colors";
   const labelClass = "block text-xs font-medium text-neutral-400 mb-1.5";
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-      <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-2xl">
+    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+      <div className="bg-neutral-800 border border-neutral-700 rounded-xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-2xl">
         <h2 className="text-lg font-semibold mb-5 tracking-tight text-white">{ticket ? 'Editar Demanda' : 'Nova Demanda'}</h2>
         
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -106,7 +106,7 @@ export default function TicketFormModal({ ticket, isOpen, onClose, onSaved }: Pr
               value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} />
           </div>
 
-          <div className="flex justify-end gap-3 pt-5 border-t border-neutral-800/50 mt-6">
+          <div className="flex justify-end gap-3 pt-5 border-t border-neutral-700/50 mt-6">
             <button type="button" onClick={onClose} className="px-4 py-2 text-sm font-medium text-neutral-400 hover:text-neutral-200 transition-colors">Cancelar</button>
             <button type="submit" className="px-5 py-2 text-sm font-medium bg-neutral-100 text-black rounded hover:bg-white transition-colors">Salvar</button>
           </div>
