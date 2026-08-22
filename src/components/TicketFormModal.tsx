@@ -55,13 +55,13 @@ export default function TicketFormModal({ ticket, isOpen, onClose, onSaved }: Pr
     onClose();
   };
 
-  const inputClass = "w-full bg-neutral-900 border border-neutral-700 rounded p-2 text-sm text-neutral-200 focus:outline-none focus:border-neutral-500 transition-colors";
-  const labelClass = "block text-xs font-medium text-neutral-400 mb-1.5";
+  const inputClass = "w-full border rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-slate-500 dark:bg-slate-900 dark:border-slate-700 dark:text-slate-200 transition-colors";
+  const labelClass = "block text-sm font-medium mb-1 dark:text-xs dark:text-slate-400 dark:mb-1.5";
 
   return (
-    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 z-50">
-      <div className="bg-neutral-800 border border-neutral-700 rounded-xl p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-2xl">
-        <h2 className="text-lg font-semibold mb-5 tracking-tight text-white">{ticket ? 'Editar Demanda' : 'Nova Demanda'}</h2>
+    <div className="fixed inset-0 bg-black/50 dark:bg-black/60 dark:backdrop-blur-sm flex items-center justify-center p-4 z-50">
+      <div className="bg-white dark:bg-slate-800 rounded-lg dark:border dark:border-slate-700 p-6 w-full max-w-lg max-h-[90vh] overflow-y-auto shadow-2xl">
+        <h2 className="text-xl font-bold mb-4 dark:text-lg dark:font-semibold dark:mb-5 dark:tracking-tight dark:text-white">{ticket ? 'Editar Demanda' : 'Nova Demanda'}</h2>
         
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
@@ -106,9 +106,9 @@ export default function TicketFormModal({ ticket, isOpen, onClose, onSaved }: Pr
               value={formData.description} onChange={e => setFormData({...formData, description: e.target.value})} />
           </div>
 
-          <div className="flex justify-end gap-3 pt-5 border-t border-neutral-700/50 mt-6">
-            <button type="button" onClick={onClose} className="px-4 py-2 text-sm font-medium text-neutral-400 hover:text-neutral-200 transition-colors">Cancelar</button>
-            <button type="submit" className="px-5 py-2 text-sm font-medium bg-neutral-100 text-black rounded hover:bg-white transition-colors">Salvar</button>
+          <div className="flex justify-end gap-2 dark:gap-3 pt-4 dark:pt-5 border-t dark:border-slate-700/50 mt-4 dark:mt-6">
+            <button type="button" onClick={onClose} className="px-4 py-2 border rounded hover:bg-slate-50 dark:border-transparent dark:text-slate-400 dark:hover:bg-transparent dark:hover:text-slate-200 transition-colors">Cancelar</button>
+            <button type="submit" className="px-4 py-2 bg-slate-900 text-white rounded hover:bg-slate-800 dark:bg-slate-100 dark:text-black dark:hover:bg-white transition-colors">Salvar</button>
           </div>
         </form>
       </div>

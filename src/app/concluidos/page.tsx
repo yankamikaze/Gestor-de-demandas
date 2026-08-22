@@ -30,14 +30,14 @@ export default function Concluidos() {
 
   return (
     <div>
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold tracking-tight mb-4">Demandas Concluídas</h2>
+      <div className="mb-6 dark:mb-8">
+        <h2 className="text-2xl font-bold mb-2 dark:tracking-tight dark:mb-4">Demandas Concluídas</h2>
         <div className="relative max-w-md">
-          <Search className="absolute left-3 top-2.5 text-neutral-500" size={18} />
+          <Search className="absolute left-3 top-2.5 text-slate-400 dark:text-slate-500" size={18} />
           <input 
             type="text" 
             placeholder="Buscar em título ou descrição..." 
-            className="w-full pl-10 pr-4 py-2 bg-neutral-800 border border-neutral-700 rounded-lg focus:outline-none focus:border-neutral-500 text-sm placeholder:text-neutral-500 transition-colors text-neutral-200"
+            className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-slate-500 dark:bg-slate-900 dark:border-slate-700 dark:text-slate-200 dark:placeholder:text-slate-500 transition-colors"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
@@ -49,8 +49,8 @@ export default function Concluidos() {
           <TicketCard key={t.id} ticket={t} onUpdate={fetchTickets} onEdit={() => {}} />
         ))}
         {filtered.length === 0 && (
-          <div className="col-span-full py-12 text-center border border-dashed border-neutral-700 rounded-lg">
-            <p className="text-neutral-500">Nenhum ticket concluído encontrado.</p>
+          <div className="col-span-full py-12 text-center dark:border dark:border-dashed dark:border-slate-700 dark:rounded-lg">
+            <p className="text-slate-500 dark:text-slate-500">Nenhum ticket concluído encontrado.</p>
           </div>
         )}
       </div>

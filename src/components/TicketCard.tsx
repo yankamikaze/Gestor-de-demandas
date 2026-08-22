@@ -25,32 +25,32 @@ export default function TicketCard({ ticket, onUpdate, onEdit }: Props) {
   };
 
   const statusColors = {
-    'Criado': 'bg-neutral-700 text-neutral-200 border border-neutral-600',
-    'Em desenvolvimento': 'bg-indigo-900/40 text-indigo-300 border border-indigo-800',
-    'Concluído': 'bg-emerald-900/30 text-emerald-400 border border-emerald-800',
+    'Criado': 'bg-slate-200 text-slate-800 dark:bg-slate-700 dark:text-slate-200 dark:border dark:border-slate-600',
+    'Em desenvolvimento': 'bg-blue-100 text-blue-800 dark:bg-indigo-900/40 dark:text-indigo-300 dark:border dark:border-indigo-800',
+    'Concluído': 'bg-green-100 text-green-800 dark:bg-emerald-900/30 dark:text-emerald-400 dark:border dark:border-emerald-800',
   };
 
   return (
-    <div className="bg-neutral-800 border border-neutral-700/50 rounded-lg p-4 shadow-sm flex flex-col h-full hover:border-neutral-600 transition-colors">
-      <div className="flex justify-between items-start mb-3 gap-2">
-        <h3 className="font-medium text-neutral-200 line-clamp-2 text-sm">{ticket.title}</h3>
-        <span className={`text-[10px] px-2 py-0.5 rounded-full font-medium whitespace-nowrap ${statusColors[ticket.status]}`}>
+    <div className="bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg p-4 shadow-sm flex flex-col h-full hover:border-slate-300 dark:hover:border-slate-600 transition-colors">
+      <div className="flex justify-between items-start mb-2 dark:mb-3 gap-2">
+        <h3 className="font-semibold text-lg line-clamp-2 dark:text-slate-200 dark:font-medium dark:text-sm">{ticket.title}</h3>
+        <span className={`text-xs px-2 py-1 dark:text-[10px] dark:py-0.5 rounded-full font-medium whitespace-nowrap ${statusColors[ticket.status]}`}>
           {ticket.status}
         </span>
       </div>
       
-      <p className="text-xs text-neutral-400 mb-4 line-clamp-3 flex-grow leading-relaxed">{ticket.description}</p>
+      <p className="text-sm text-slate-600 dark:text-xs dark:text-slate-400 mb-4 line-clamp-3 flex-grow dark:leading-relaxed">{ticket.description}</p>
       
-      <div className="text-[11px] text-neutral-500 space-y-1.5 mb-4 font-medium">
-        <div className="flex items-center gap-1.5"><Tag size={12} className="text-neutral-500"/> {ticket.type}</div>
-        <div className="flex items-center gap-1.5"><User size={12} className="text-neutral-500"/> {ticket.area}</div>
-        <div className="flex items-center gap-1.5"><Calendar size={12} className="text-neutral-500"/> {new Date(ticket.created_at).toLocaleDateString()}</div>
+      <div className="text-xs text-slate-500 dark:text-[11px] dark:text-slate-500 space-y-1 dark:space-y-1.5 mb-4 dark:font-medium">
+        <div className="flex items-center gap-1 dark:gap-1.5"><Tag size={12} className="dark:text-slate-500"/> {ticket.type}</div>
+        <div className="flex items-center gap-1 dark:gap-1.5"><User size={12} className="dark:text-slate-500"/> {ticket.area}</div>
+        <div className="flex items-center gap-1 dark:gap-1.5"><Calendar size={12} className="dark:text-slate-500"/> {new Date(ticket.created_at).toLocaleDateString()}</div>
       </div>
 
-      <div className="flex gap-2 mt-auto pt-3 border-t border-neutral-700/50">
+      <div className="flex gap-2 mt-auto pt-4 dark:pt-3 border-t dark:border-slate-700/50">
         <button 
           onClick={() => onEdit(ticket)}
-          className="flex-1 text-[11px] font-medium bg-neutral-700 hover:bg-neutral-600 text-neutral-200 py-1.5 rounded transition-colors"
+          className="flex-1 text-sm dark:text-[11px] bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 py-1.5 rounded transition-colors"
         >
           Editar
         </button>
@@ -58,7 +58,7 @@ export default function TicketCard({ ticket, onUpdate, onEdit }: Props) {
         {ticket.status === 'Criado' && (
           <button 
             onClick={() => handleStatusChange('Em desenvolvimento')}
-            className="flex-1 text-[11px] font-medium bg-indigo-950/60 hover:bg-indigo-900/60 text-indigo-400 py-1.5 rounded transition-colors"
+            className="flex-1 text-sm dark:text-[11px] bg-blue-50 hover:bg-blue-100 text-blue-700 dark:bg-indigo-950/60 dark:hover:bg-indigo-900/60 dark:text-indigo-400 py-1.5 rounded transition-colors"
           >
             Iniciar
           </button>
@@ -67,7 +67,7 @@ export default function TicketCard({ ticket, onUpdate, onEdit }: Props) {
         {ticket.status === 'Em desenvolvimento' && (
           <button 
             onClick={() => handleStatusChange('Concluído')}
-            className="flex-1 text-[11px] font-medium bg-emerald-950/50 hover:bg-emerald-900/50 text-emerald-400 py-1.5 rounded transition-colors"
+            className="flex-1 text-sm dark:text-[11px] bg-green-50 hover:bg-green-100 text-green-700 dark:bg-emerald-950/50 dark:hover:bg-emerald-900/50 dark:text-emerald-400 py-1.5 rounded transition-colors"
           >
             Concluir
           </button>
