@@ -31,11 +31,11 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} transition-colors duration-200`}>
-        <nav className="bg-slate-900 text-white p-4 shadow-md dark:bg-transparent dark:shadow-none flex justify-between items-center">
+        <nav className="bg-slate-900 text-white p-4 shadow-md dark:bg-[#0d0d0d] dark:shadow-none dark:border-b dark:border-[#1a1a1a] flex justify-between items-center">
           <h1 className="text-xl font-bold">Demandas TI</h1>
           <div className="flex items-center space-x-6 text-sm font-medium">
-            <a href="/" className="hover:text-slate-300 dark:text-slate-300 dark:hover:text-white transition-colors">Matriz</a>
-            <a href="/concluidos" className="hover:text-slate-300 dark:text-slate-300 dark:hover:text-white transition-colors">Concluídos</a>
+            <a href="/" className="hover:text-slate-300 dark:text-slate-400 dark:hover:text-white transition-colors">Matriz</a>
+            <a href="/concluidos" className="hover:text-slate-300 dark:text-slate-400 dark:hover:text-white transition-colors">Concluídos</a>
             <ThemeToggle />
           </div>
         </nav>

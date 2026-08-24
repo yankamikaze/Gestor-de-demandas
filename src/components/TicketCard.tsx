@@ -15,59 +15,63 @@ export default function TicketCard({ ticket, onUpdate, onEdit }: Props) {
     if (newStatus === 'Concluído') {
       completedAt = new Date().toISOString();
     }
-    
-    await supabase
+
+    const { error } = await supabase
       .from('tickets')
       .update({ status: newStatus, completed_at: completedAt })
       .eq('id', ticket.id);
-      
+
+    if (error) {
+      alert('Erro ao atualizar status: ' + error.message);
+      return;
+    }
     onUpdate();
   };
 
   const statusColors = {
-    'Criado': 'bg-slate-200 text-slate-800 dark:bg-slate-700 dark:text-slate-200 dark:border dark:border-slate-600',
-    'Em desenvolvimento': 'bg-blue-100 text-blue-800 dark:bg-indigo-900/40 dark:text-indigo-300 dark:border dark:border-indigo-800',
-    'Concluído': 'bg-green-100 text-green-800 dark:bg-emerald-900/30 dark:text-emerald-400 dark:border dark:border-emerald-800',
+    'Criado': 'bg-slate-200 text-slate-800 dark:bg-[#2a2a2a] dark:text-slate-300 dark:border dark:border-[#3a3a3a]',
+    'Em desenvolvimento': 'bg-blue-100 text-blue-800 dark:bg-blue-900/40 dark:text-blue-300 dark:border dark:border-blue-800/50',
+    'Concluído': 'bg-green-100 text-green-800 dark:bg-emerald-900/30 dark:text-emerald-400 dark:border dark:border-emerald-800/50',
   };
 
   return (
-    <div className="bg-white dark:bg-slate-800 border dark:border-slate-700 rounded-lg p-4 shadow-sm flex flex-col h-full hover:border-slate-300 dark:hover:border-slate-600 transition-colors">
-      <div className="flex justify-between items-start mb-2 dark:mb-3 gap-2">
+    <div className="bg-white border rounded-lg p-4 shadow-sm flex flex-col h-full dark:bg-[#1a1a1a] dark:border-[#2a2a2a] dark:hover:border-[#3a3a3a] transition-colors">
+      <div className="flex justify-between items-start mb-2 gap-2">
         <h3 className="font-semibold text-lg line-clamp-2 dark:text-slate-200 dark:font-medium dark:text-sm">{ticket.title}</h3>
-        <span className={`text-xs px-2 py-1 dark:text-[10px] dark:py-0.5 rounded-full font-medium whitespace-nowrap ${statusColors[ticket.status]}`}>
+        <span className={`text-xs px-2 py-1 rounded-full font-medium whitespace-nowrap ${statusColors[ticket.status]}`}>
           {ticket.status}
         </span>
       </div>
-      
-      <p className="text-sm text-slate-600 dark:text-xs dark:text-slate-400 mb-4 line-clamp-3 flex-grow dark:leading-relaxed">{ticket.description}</p>
-      
-      <div className="text-xs text-slate-500 dark:text-[11px] dark:text-slate-500 space-y-1 dark:space-y-1.5 mb-4 dark:font-medium">
-        <div className="flex items-center gap-1 dark:gap-1.5"><Tag size={12} className="dark:text-slate-500"/> {ticket.type}</div>
-        <div className="flex items-center gap-1 dark:gap-1.5"><User size={12} className="dark:text-slate-500"/> {ticket.area}</div>
-        <div className="flex items-center gap-1 dark:gap-1.5"><Calendar size={12} className="dark:text-slate-500"/> {new Date(ticket.created_at).toLocaleDateString()}</div>
+
+      <p className="text-sm text-slate-600 mb-4 line-clamp-3 flex-grow dark:text-xs dark:text-slate-400 dark:leading-relaxed">{ticket.description}</p>
+
+      <div className="text-xs text-slate-500 space-y-1 mb-4">
+        <div className="flex items-center gap-1"><Tag size={12}/> {ticket.type}</div>
+        <div className="flex items-center gap-1"><User size={12}/> {ticket.area}</div>
+        <div className="flex items-center gap-1"><Calendar size={12}/> {new Date(ticket.created_at).toLocaleDateString()}</div>
       </div>
 
-      <div className="flex gap-2 mt-auto pt-4 dark:pt-3 border-t dark:border-slate-700/50">
-        <button 
+      <div className="flex gap-2 mt-auto pt-4 border-t dark:border-[#2a2a2a]">
+        <button
           onClick={() => onEdit(ticket)}
-          className="flex-1 text-sm dark:text-[11px] bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 py-1.5 rounded transition-colors"
+          className="flex-1 text-sm bg-slate-100 hover:bg-slate-200 py-1.5 rounded dark:bg-[#2a2a2a] dark:hover:bg-[#333] dark:text-slate-300 transition-colors"
         >
           Editar
         </button>
-        
+
         {ticket.status === 'Criado' && (
-          <button 
+          <button
             onClick={() => handleStatusChange('Em desenvolvimento')}
-            className="flex-1 text-sm dark:text-[11px] bg-blue-50 hover:bg-blue-100 text-blue-700 dark:bg-indigo-950/60 dark:hover:bg-indigo-900/60 dark:text-indigo-400 py-1.5 rounded transition-colors"
+            className="flex-1 text-sm bg-blue-50 hover:bg-blue-100 text-blue-700 py-1.5 rounded dark:bg-blue-950/50 dark:hover:bg-blue-900/50 dark:text-blue-400 transition-colors"
           >
             Iniciar
           </button>
         )}
-        
+
         {ticket.status === 'Em desenvolvimento' && (
-          <button 
+          <button
             onClick={() => handleStatusChange('Concluído')}
-            className="flex-1 text-sm dark:text-[11px] bg-green-50 hover:bg-green-100 text-green-700 dark:bg-emerald-950/50 dark:hover:bg-emerald-900/50 dark:text-emerald-400 py-1.5 rounded transition-colors"
+            className="flex-1 text-sm bg-green-50 hover:bg-green-100 text-green-700 py-1.5 rounded dark:bg-emerald-950/50 dark:hover:bg-emerald-900/50 dark:text-emerald-400 transition-colors"
           >
             Concluir
           </button>

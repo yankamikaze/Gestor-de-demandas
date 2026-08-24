@@ -4,12 +4,12 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0f172a; /* slate-900 */
+  --foreground: #0f172a;
 }
 
 .dark {
-  --background: #0f172a; /* slate-900 */
-  --foreground: #f8fafc; /* slate-50 */
+  --background: #0d0d0d;
+  --foreground: #f1f1f1;
 }
 
 body {
@@ -26,15 +26,15 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1; /* slate-300 for light mode */
+  background: #cbd5e1;
   border-radius: 4px;
 }
 .dark ::-webkit-scrollbar-thumb {
-  background: #334155; /* slate-700 for dark mode */
+  background: #333;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8; /* slate-400 */
+  background: #94a3b8;
 }
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #475569; /* slate-600 */
+  background: #555;
 }
