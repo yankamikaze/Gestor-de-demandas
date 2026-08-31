@@ -36,12 +36,12 @@ export default function Home() {
   const getTicketsByQuadrant = (q: number) => tickets.filter(t => t.quadrant === q);
 
   const Quadrant = ({ title, desc, num, lightBg, darkBg }: { title: string, desc: string, num: number, lightBg: string, darkBg: string }) => (
-    <div className={`p-4 rounded-xl border min-h-[300px] flex flex-col ${lightBg} ${darkBg}`}>
-      <div className="mb-4">
+    <div className={`p-4 rounded-xl border h-[400px] md:h-[450px] flex flex-col ${lightBg} ${darkBg}`}>
+      <div className="mb-4 flex-shrink-0">
         <h2 className="font-bold text-lg dark:text-slate-100 dark:font-semibold">{title}</h2>
         <p className="text-sm opacity-80 dark:text-amber-200/70 dark:text-xs">{desc}</p>
       </div>
-      <div className="space-y-3 flex-grow">
+      <div className="space-y-3 flex-grow overflow-y-auto pr-2">
         {getTicketsByQuadrant(num).map(t => (
           <TicketCard key={t.id} ticket={t} onUpdate={fetchTickets} onEdit={(t) => { setEditingTicket(t); setIsModalOpen(true); }} />
         ))}
