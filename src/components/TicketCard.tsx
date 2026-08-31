@@ -1,7 +1,7 @@
 'use client';
 import { Ticket } from '@/types';
 import { supabase } from '@/lib/supabaseClient';
-import { Calendar, Tag, User } from 'lucide-react';
+import { Calendar, Tag, User, CheckCircle } from 'lucide-react';
 
 interface Props {
   ticket: Ticket;
@@ -48,7 +48,12 @@ export default function TicketCard({ ticket, onUpdate, onEdit }: Props) {
       <div className="text-xs text-slate-500 space-y-1 mb-4">
         <div className="flex items-center gap-1"><Tag size={12}/> {ticket.type}</div>
         <div className="flex items-center gap-1"><User size={12}/> {ticket.area}</div>
-        <div className="flex items-center gap-1"><Calendar size={12}/> {new Date(ticket.created_at).toLocaleDateString()}</div>
+        <div className="flex items-center gap-1" title="Data de Abertura"><Calendar size={12}/> Abertura: {new Date(ticket.created_at).toLocaleDateString()}</div>
+        {ticket.completed_at && (
+          <div className="flex items-center gap-1 text-emerald-600 dark:text-emerald-500" title="Data de Conclusão">
+            <CheckCircle size={12}/> Conclusão: {new Date(ticket.completed_at).toLocaleDateString()}
+          </div>
+        )}
       </div>
 
       <div className="flex gap-2 mt-auto pt-4 border-t dark:border-[#2a2a2a]">
