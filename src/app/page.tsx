@@ -15,7 +15,7 @@ export default function Home() {
       .from('tickets')
       .select('*')
       .in('status', ['Criado', 'Em desenvolvimento'])
-      .order('created_at', { ascending: false });
+      .order('created_at', { ascending: true });
 
     if (error) {
       console.error('Erro ao buscar tickets:', error.message);
